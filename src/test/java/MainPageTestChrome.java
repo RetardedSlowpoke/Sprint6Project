@@ -14,7 +14,7 @@ private WebDriver driver;
 public void browserStartAndOpenPage()
 {
     ChromeOptions options = new ChromeOptions();
-    options.addArguments("--no-sandbox", "--guest", "--headless", "--disable-dev-shm-usage");
+    options.addArguments("--no-sandbox", "--guest","--headless", "--disable-dev-shm-usage"); //
 
     driver = new ChromeDriver(options);
     driver.get("https://qa-scooter.praktikum-services.ru/");
@@ -35,6 +35,7 @@ public void browserStartAndOpenPage()
 
     public void faqTabOpenAndCheckTest(int index, String expected){
     MainPagePOM mainPagePOM = new MainPagePOM(driver);
+    //mainPagePOM.cookieButtonAcceptClick(); //В headless режиме кнопка принятия кук почему-то не кликается. Без него всё работает. Загадка. Решение - отключить headless или убрать закрытие попапа. Оставил для отчётности.
     mainPagePOM.scrollToFaqTab(index);
     mainPagePOM.faqTabClick(index);
     String actual = mainPagePOM.faqTabGetText(index);

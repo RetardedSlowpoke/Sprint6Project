@@ -9,15 +9,18 @@ import java.time.Duration;
 
 public class MainPagePOM {
     private WebDriver driver;
+
+    public MainPagePOM(WebDriver driver) {
+        this.driver = driver;
+    }
+
     private By orderButtonHeader = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]"); //Кнопка заказа наверху
     private By orderButtonBottom = By.xpath("//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button"); //Кнопка заказа пониже
     private By statusButton = By.className("Header_Link__1TAG7"); //Кнопка "статус заказа"
     private By logoYandex = By.className("Header_LogoYandex__3TSOI"); //Логотип яндекса
     private By logoScooter = By.className("Header_LogoScooter__3lsAR"); //Логотип самокатов
+    private By cookieButton = By.className("App_CookieButton__3cvqF"); //Кнопка принятия куки.
 
-    public MainPagePOM(WebDriver driver) {
-        this.driver = driver;
-    }
 
     public void orderButtonHeaderClick() {
         driver.findElement(orderButtonHeader).click();
@@ -52,7 +55,15 @@ public class MainPagePOM {
 
     public void scrollToFaqTab(int index) {
         WebElement element = driver.findElement(By.id("accordion__heading-" + index));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element); //Скролл вместо закрытия окна с куками выглядит надёжнее.
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    public void cookieButtonAcceptClick()
+    {
+        driver.findElement(cookieButton).click();
+    }
+    public void scrollToBottomOrderButton(){
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});", element); //Нижнюю кнопку закрывает окно с куками.
     }
 }
 

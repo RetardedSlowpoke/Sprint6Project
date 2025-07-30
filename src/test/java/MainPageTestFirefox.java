@@ -2,13 +2,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,6 +36,7 @@ public class MainPageTestFirefox {
 
     public void faqTabOpenAndCheckTest(int index, String expected){
         MainPagePOM mainPagePOM = new MainPagePOM(driver);
+        mainPagePOM.cookieButtonAcceptClick();
         mainPagePOM.scrollToFaqTab(index);
         mainPagePOM.faqTabClick(index);
         String actual = mainPagePOM.faqTabGetText(index);
