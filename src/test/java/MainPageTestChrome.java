@@ -31,11 +31,10 @@ public void browserStartAndOpenPage()
         "5| Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.",
         "6| Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.",
         "7| Да, обязательно. Всем самокатов! И Москве, и Московской области."
-}, delimiter = '|')
+}, delimiter = '|') //Изменил разделитель, чтобы нормально считывались запятые в тексте.
 
     public void faqTabOpenAndCheckTest(int index, String expected){
     MainPagePOM mainPagePOM = new MainPagePOM(driver);
-    //mainPagePOM.cookieButtonAcceptClick(); //В headless режиме кнопка принятия кук почему-то не кликается. Без него всё работает. Загадка. Решение - отключить headless или убрать закрытие попапа. Оставил для отчётности.
     mainPagePOM.scrollToFaqTab(index);
     mainPagePOM.faqTabClick(index);
     String actual = mainPagePOM.faqTabGetText(index);

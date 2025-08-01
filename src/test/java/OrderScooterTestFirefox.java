@@ -32,33 +32,26 @@ public class OrderScooterTestFirefox
 
         OrderPagePOM orderPagePOM = new OrderPagePOM(driver);
 
-        orderPagePOM.nameFieldClick();
-        orderPagePOM.setName(name); //Выделили и заполнили имя.
 
-        orderPagePOM.surnameFieldClick();
-        orderPagePOM.setSurname(surname); //Фамилию
+        orderPagePOM.nameFieldClickAndFill(name); //Выделили и заполнили имя.
 
-        orderPagePOM.addressFieldClick();
-        orderPagePOM.setAddress(address); //Адрес
+        orderPagePOM.surnameFieldClickAndFill(surname); //Фамилию
 
-        orderPagePOM.stationFieldClick();
-        orderPagePOM.setStation(station); //Метро
+        orderPagePOM.addressFieldClickAndFill(address);//Адрес
 
-        orderPagePOM.numberFieldClick();
-        orderPagePOM.setPhoneNumber(number); //Номер
+        orderPagePOM.stationFieldClickAndFill(station);//Метро
+
+        orderPagePOM.numberFieldClickAndFill(number); //Номер
 
         orderPagePOM.continueButtonClick(); //Дальше.
 //Вторая страничка
-        orderPagePOM.dateFieldClick();
-        orderPagePOM.setDate(date); //"Когда привезти..."
+        orderPagePOM.dateFieldClickAndFill(date); //"Когда привезти..."
 
-        orderPagePOM.periodFieldClick();
-        orderPagePOM.setPeriod(period); //Выбираем на сколько
+        orderPagePOM.periodFieldClickAndFill(period);//Выбираем на сколько
 
         orderPagePOM.setColor(color); //устанавливаем цвет
 
-        orderPagePOM.commentFieldClick();
-        orderPagePOM.setComment(comment); //пишем комментарий (или не пишем)
+        orderPagePOM.commentFieldClickAndFill(comment);//пишем комментарий
 
         orderPagePOM.orderButtonClick(); //Жмём нижнюю "заказать"
         orderPagePOM.confirmClick(); //Тыкаем на "Да".

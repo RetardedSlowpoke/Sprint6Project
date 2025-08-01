@@ -26,69 +26,53 @@ public class OrderPagePOM
     private By orderButton = By.xpath("(//button[text()='Заказать'])[2]"); //Хитрая кнопка "заказать" же ещё и сверху есть. А мне вторая нужна... Завершаем заказ.
     private By confirmButton = By.xpath("(//button[text()='Да'])");
 
-    public void nameFieldClick (){ //
+    public void nameFieldClickAndFill (String name){
         driver.findElement(nameField).click();
-    }
-    public void surnameFieldClick(){
-        driver.findElement(surnameField);
-    }
-    public void addressFieldClick(){
-        driver.findElement(addressField);
-    }
-    public void stationFieldClick(){
-        driver.findElement(stationField);
-    }
-    public void numberFieldClick(){
-        driver.findElement(numberField);
-    }
-    public void setName(String name) {
         driver.findElement(nameField).sendKeys(name);
     }
-
-    public void setSurname(String surname) {
+    public void surnameFieldClickAndFill(String surname){
+        driver.findElement(surnameField).click();
         driver.findElement(surnameField).sendKeys(surname);
     }
-
-    public void setAddress(String address) {
+    public void addressFieldClickAndFill(String address){
+        driver.findElement(addressField).click();
         driver.findElement(addressField).sendKeys(address);
     }
-
-    public void setStation(String station) {
+    public void stationFieldClickAndFill(String station){
+        driver.findElement(stationField).click();
         driver.findElement(stationField).sendKeys(station);
         driver.findElement(By.xpath("//div[contains(text(),'" + station + "')]")).click(); //Пытаемся выбрать заданную станцию: как нормально разбираться с выпадающим списком не ясно, его же не заинспектить...
     }
-
-    public void setPhoneNumber(String number) {
+    public void numberFieldClickAndFill(String number){
+        driver.findElement(numberField).click();
         driver.findElement(numberField).sendKeys(number);
     }
+
     public void continueButtonClick(){
         driver.findElement(continueButton).click();
     }
-    public void dateFieldClick(){
+    public void dateFieldClickAndFill(String date){
         driver.findElement(dateField).click();
-    }
-    public void setDate(String date){
         driver.findElement(dateField).sendKeys(date);
         driver.findElement(dateField).sendKeys(Keys.ENTER); //убираем датапикер
     }
-    public void periodFieldClick(){
+
+    public void periodFieldClickAndFill(String period){
         driver.findElement(periodField).click();
-    }
-    public By periodFieldOptions (String option){
-    return By.xpath("//div[@class='Dropdown-option' and text()='" + option + "']"); //ищем нужную опцию
-    }
-    public void setPeriod(String period){
         driver.findElement(periodFieldOptions(period)).click();
     }
+    public By periodFieldOptions (String option){
+    return By.xpath("//div[@class='Dropdown-option' and text()='" + option + "']"); //ищем нужную опцию... Не уверен, что это можно запихнуть в тот же метод. Или можно?
+    }
+
     public void setColor(String colorId) {
         driver.findElement(By.id(colorId)).click();
     }
-    public void commentFieldClick(){
+    public void commentFieldClickAndFill(String comment){
         driver.findElement(commentField).click();
-    }
-    public void setComment(String comment){
         driver.findElement(commentField).sendKeys(comment);
     }
+
     public void orderButtonClick(){
         driver.findElement(orderButton).click();
     }

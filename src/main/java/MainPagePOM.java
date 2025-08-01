@@ -65,5 +65,10 @@ public class MainPagePOM {
         WebElement element = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});", element); //Нижнюю кнопку закрывает окно с куками.
     }
+    public void clickOrderButtonByXpath(String xpath) {
+        cookieButtonAcceptClick();
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
 }
 
