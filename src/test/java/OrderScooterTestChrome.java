@@ -33,7 +33,7 @@ public class OrderScooterTestChrome
         MainPagePOM mainPagePOM = new MainPagePOM(driver);
 
 
-        mainPagePOM.clickOrderButtonByXpath(xpath);
+        mainPagePOM.clickOrderButtonByXpath(xpath); //Открываем страницу заказа: в первом сценарии по верхней кнопке, во второй по нижней.
         orderPagePOM.nameFieldClickAndFill(name); //Выделили и заполнили имя.
 
         orderPagePOM.surnameFieldClickAndFill(surname); //Фамилию

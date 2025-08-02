@@ -14,21 +14,14 @@ public class MainPagePOM {
         this.driver = driver;
     }
 
-    private By orderButtonHeader = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]"); //Кнопка заказа наверху
-    private By orderButtonBottom = By.xpath("//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button"); //Кнопка заказа пониже
+   //Раньше тут были локаторы разных кнопок "заказать".
     private By statusButton = By.className("Header_Link__1TAG7"); //Кнопка "статус заказа"
-    private By logoYandex = By.className("Header_LogoYandex__3TSOI"); //Логотип яндекса
+    private By logoYandex = By.xpath("//img[@alt='Yandex']");//Логотип яндекса
     private By logoScooter = By.className("Header_LogoScooter__3lsAR"); //Логотип самокатов
     private By cookieButton = By.className("App_CookieButton__3cvqF"); //Кнопка принятия куки.
 
 
-    public void orderButtonHeaderClick() {
-        driver.findElement(orderButtonHeader).click();
-    }
-
-    public void orderButtonBottomClick() {
-        driver.findElement(orderButtonBottom).click();
-    }
+//Раньше тут были методы с click на разные кнопки "Заказать", сейчас внёс их в параметеризацию.
 
     public void statusButtonClick() {
         driver.findElement(statusButton).click();
@@ -61,10 +54,7 @@ public class MainPagePOM {
     {
         driver.findElement(cookieButton).click();
     }
-    public void scrollToBottomOrderButton(){
-        WebElement element = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});", element); //Нижнюю кнопку закрывает окно с куками.
-    }
+
     public void clickOrderButtonByXpath(String xpath) {
         cookieButtonAcceptClick();
         driver.findElement(By.xpath(xpath)).click();
