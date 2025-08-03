@@ -14,18 +14,14 @@ public class MainPagePOM {
         this.driver = driver;
     }
 
-   //Раньше тут были локаторы разных кнопок "заказать".
+   //Раньше тут были локаторы разных кнопок "заказать". Сейчас остался один.
+    private By orderButton = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]");
     private By statusButton = By.className("Header_Link__1TAG7"); //Кнопка "статус заказа"
     private By logoYandex = By.xpath("//img[@alt='Yandex']");//Логотип яндекса
     private By logoScooter = By.className("Header_LogoScooter__3lsAR"); //Логотип самокатов
     private By cookieButton = By.className("App_CookieButton__3cvqF"); //Кнопка принятия куки.
 
 
-//Раньше тут были методы с click на разные кнопки "Заказать", сейчас внёс их в параметеризацию.
-
-    public void statusButtonClick() {
-        driver.findElement(statusButton).click();
-    }
 
     public void logoYandexClick() {
         driver.findElement(logoYandex).click();

@@ -1,9 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class OrderPagePOM
 {
@@ -19,6 +16,7 @@ public class OrderPagePOM
     private By stationField = By.xpath("//input[@placeholder='* Станция метро']"); //Метро
     private By numberField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']"); //Телефон
     private By continueButton = By.cssSelector (".Button_Button__ra12g.Button_Middle__1CSJM");
+    private By allErrorMessages = By.className("Input_ErrorMessage__3HvIb");
     //Вторая страничка
     private By dateField = By.xpath("*//input[@placeholder= '* Когда привезти самокат']"); //Когда
     private By periodField = By.className("Dropdown-placeholder");

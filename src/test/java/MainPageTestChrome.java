@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -77,11 +76,12 @@ public class MainPageTestChrome {
 
             assertEquals("https://dzen.ru/?yredirect=true",currentUrl,  "Открылась другая страница"); //Большой вопрос: в задании сказано, что открываться должна страница яндекса, но там-то дзен теперь... Решил изменить на дзен, задание явно не на сравнение той или иной страницы, а на переключение между вкладками.
         }
+    @AfterEach
+    public void browserQuit() {
+
+        driver.quit();
+    }
     }
 
-//    @AfterEach
-//    public void browserQuit() {
-//
-//        driver.quit();
-//    }
+
 
