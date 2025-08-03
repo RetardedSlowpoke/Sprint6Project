@@ -15,8 +15,7 @@ public class OrderPagePOM
     private  By addressField = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']"); //Поле "Адрес"
     private By stationField = By.xpath("//input[@placeholder='* Станция метро']"); //Метро
     private By numberField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']"); //Телефон
-    private By continueButton = By.cssSelector (".Button_Button__ra12g.Button_Middle__1CSJM");
-    private By allErrorMessages = By.className("Input_ErrorMessage__3HvIb");
+    private By continueButton = By.cssSelector (".Button_Button__ra12g.Button_Middle__1CSJM");;
     //Вторая страничка
     private By dateField = By.xpath("*//input[@placeholder= '* Когда привезти самокат']"); //Когда
     private By periodField = By.className("Dropdown-placeholder");
