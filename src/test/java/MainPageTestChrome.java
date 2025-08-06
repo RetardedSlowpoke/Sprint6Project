@@ -1,30 +1,14 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MainPageTestChrome {
-    private WebDriver driver;
-    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
-
-    @BeforeEach
-    public void browserStartAndOpenPage() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--guest", "--disable-dev-shm-usage");
-        //options.addArguments ("--headless"); //Хедлес вынесен отдельно для отладки - закомментил - посмотрел что происходит - раскомментил.
-
-        driver = new ChromeDriver(options);
-        driver.get(BASE_URL);
-    }
+public class MainPageTestChrome extends BaseTest {
 
 
     @ParameterizedTest
@@ -77,11 +61,6 @@ public class MainPageTestChrome {
 
             assertEquals("https://dzen.ru/?yredirect=true",currentUrl,  "Открылась другая страница"); //Большой вопрос: в задании сказано, что открываться должна страница яндекса, но там-то дзен теперь... Решил изменить на дзен, задание явно не на сравнение той или иной страницы, а на переключение между вкладками.
         }
-    @AfterEach
-    public void browserQuit() {
-
-        driver.quit();
-    }
     }
 
 

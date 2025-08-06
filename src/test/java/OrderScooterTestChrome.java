@@ -1,28 +1,11 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class OrderScooterTestChrome
+public class OrderScooterTestChrome extends BaseTest
 
 {
-    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
-    private WebDriver driver;
-    @BeforeEach
-    public void browserStartAndOpenPage()
-    {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--guest", "--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(options);
-        driver.get(BASE_URL);
-    }
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -66,9 +49,4 @@ public class OrderScooterTestChrome
 
     }
 
-    @AfterEach
-    public void browserQuit() {
-
-       driver.quit();
-    }
 }
