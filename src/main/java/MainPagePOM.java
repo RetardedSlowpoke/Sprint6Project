@@ -13,7 +13,8 @@ public class MainPagePOM {
     public MainPagePOM(WebDriver driver) {
         this.driver = driver;
     }
-
+    private By orderButtonTop = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]");
+    private By orderButtonBot = By.xpath("//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1]");
     private By statusButton = By.className("Header_Link__1TAG7"); //Кнопка "статус заказа"
     private By logoYandex = By.xpath("//img[@alt='Yandex']");//Логотип яндекса
     private By logoScooter = By.className("Header_LogoScooter__3lsAR"); //Логотип самокатов
@@ -49,9 +50,12 @@ public class MainPagePOM {
         driver.findElement(cookieButton).click();
     }
 
-    public void clickOrderButtonByXpath(String xpath) {
-        cookieButtonAcceptClick();
-        driver.findElement(By.xpath(xpath)).click();
+    public void clickOrderButton(String position) {
+        if (position.equals("top")) {
+            driver.findElement(orderButtonTop).click();
+        } else {
+            driver.findElement(orderButtonBot).click();
+        }
     }
 
 }

@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class OrderScooterTestChrome
 
 {
+    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
     private WebDriver driver;
     @BeforeEach
     public void browserStartAndOpenPage()
@@ -20,21 +21,21 @@ public class OrderScooterTestChrome
         options.addArguments("--no-sandbox", "--guest", "--disable-dev-shm-usage");
 
         driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(BASE_URL);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "//*[@id=\"root\"]/div/div/div[1]/div[2]/button[1], Иван, Иванов, Ленинский проспект 123, Ленинск,+78005553535, 25.08.2025, двое суток, black, Комментарий для курьера",
-            "//*[@id=\"root\"]/div/div/div[4]/div[2]/div[5]/button, Петр, Петров, Первомайская 22, Первома, +79123456789, 29.09.2025, шестеро суток, grey, Другой комментарий" //Хотел сначала не заполнять строку, но решил что усложню слишком сильно, и так путаюсь уже.
+            "top, Иван, Иванов, Ленинский проспект 123, Ленинск,+78005553535, 25.08.2025, двое суток, black, Комментарий для курьера",
+            "bot, Петр, Петров, Первомайская 22, Первома, +79123456789, 29.09.2025, шестеро суток, grey, Другой комментарий" //Хотел сначала не заполнять строку, но решил что усложню слишком сильно, и так путаюсь уже.
     })
-    public void orderParameterizedTest(String xpath, String name, String surname, String address, String station, String number, String date, String period, String color, String comment){
+    public void orderParameterizedTest(String position, String name, String surname, String address, String station, String number, String date, String period, String color, String comment){
 
         OrderPagePOM orderPagePOM = new OrderPagePOM(driver);
         MainPagePOM mainPagePOM = new MainPagePOM(driver);
 
 
-        mainPagePOM.clickOrderButtonByXpath(xpath); //Открываем страницу заказа: в первом сценарии по верхней кнопке, во второй по нижней.
+        mainPagePOM.clickOrderButton(position); //Открываем страницу заказа: в первом сценарии по верхней кнопке, во второй по нижней.
         orderPagePOM.nameFieldClickAndFill(name); //Выделили и заполнили имя.
 
         orderPagePOM.surnameFieldClickAndFill(surname); //Фамилию

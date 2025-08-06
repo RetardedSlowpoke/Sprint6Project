@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MainPageTestChrome {
     private WebDriver driver;
+    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
 
     @BeforeEach
     public void browserStartAndOpenPage() {
@@ -22,7 +23,7 @@ public class MainPageTestChrome {
         //options.addArguments ("--headless"); //Хедлес вынесен отдельно для отладки - закомментил - посмотрел что происходит - раскомментил.
 
         driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(BASE_URL);
     }
 
 
@@ -48,7 +49,7 @@ public class MainPageTestChrome {
     }
 
     @Test
-    public void ScooterButtonUrlTest() { //Доп. задание: клик по лого самоката.
+    public void scooterButtonUrlTest() { //Доп. задание: клик по лого самоката.
         MainPagePOM mainPagePOM = new MainPagePOM(driver);
         mainPagePOM.logoScooterClick();
         String url = driver.getCurrentUrl();
@@ -56,7 +57,7 @@ public class MainPageTestChrome {
     }
 
     @Test
-    public void YandexLogoUrlTest() {
+    public void yandexLogoUrlTest() {
         MainPagePOM mainPagePOM = new MainPagePOM(driver);
 
         mainPagePOM.logoYandexClick();
