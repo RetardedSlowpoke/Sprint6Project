@@ -43,7 +43,7 @@ public class OrderScooterTestChrome extends BaseTest
         orderPagePOM.confirmClick(); //Тыкаем на "Да".
 
 
-        String successText = driver.findElement(By.className("Order_Text__2broi")).getText(); //Получаем текст из окошка которого тут не будет, хе-хе.
+        String successText = orderPagePOM.successWindowGetText(); //Получаем текст из окошка которого тут не будет, хе-хе.
 
         assertTrue(successText.contains("Номер заказа"), "Окно подтверждения заказа не выскочило"); //Тот самый баг: в Chrome кнопка "Да" кликается, но ничего не делает.
 

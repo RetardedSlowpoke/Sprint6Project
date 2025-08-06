@@ -22,6 +22,7 @@ public class OrderPagePOM
     private By commentField = By.xpath("//input[@placeholder='Комментарий для курьера']"); //Комментарий
     private By orderButton = By.xpath("(//button[text()='Заказать'])[2]"); //Хитрая кнопка "заказать" же ещё и сверху есть. А мне вторая нужна... Завершаем заказ.
     private By confirmButton = By.xpath("(//button[text()='Да'])");
+    private By successWindow = By.className("Order_Text__2broi"); //Действительно, этот я пропустил. Спасибо.
 
     public void nameFieldClickAndFill (String name){
         driver.findElement(nameField).click();
@@ -75,5 +76,8 @@ public class OrderPagePOM
     }
     public void confirmClick(){
         driver.findElement(confirmButton).click();
+    }
+    public String successWindowGetText(){
+        return driver.findElement(successWindow).getText();
     }
 }

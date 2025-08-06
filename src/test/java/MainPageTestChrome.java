@@ -37,7 +37,7 @@ public class MainPageTestChrome extends BaseTest {
         MainPagePOM mainPagePOM = new MainPagePOM(driver);
         mainPagePOM.logoScooterClick();
         String url = driver.getCurrentUrl();
-        assertEquals("https://qa-scooter.praktikum-services.ru/", url, "Адрес не совпадает с ожидаемым.");
+        assertEquals(BASE_URL, url, "Адрес не совпадает с ожидаемым."); //Справедливо.
     }
 
     @Test
